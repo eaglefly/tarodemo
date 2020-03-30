@@ -1,15 +1,15 @@
 import {AtButton} from "taro-ui";
 import { observer } from '@tarojs/mobx';
-import axios from 'taro-axios'
 import Taro,{useState,useEffect,useContext} from '@tarojs/taro'
-import { View, Text } from '@tarojs/components'
+import { View, Text } from '@tarojs/components';
 import './index.scss'
 import i18n from "../../i18n";
 // import jsonPath from '../../jsonpath';
 import store from '../../store/index'
+import TsBase64 from '../../util/TsBase64';
 
 const Index =()=> {
-  const { count, increment, decrement } = useContext(store)
+  const { count, increment, decrement, getUser,auth } = useContext(store) as any;
 
 
   const message = i18n.profile.info({
@@ -27,18 +27,11 @@ const Index =()=> {
   };
 
   const switchToChinese = () => {
-    const headers = {
-      'Accept-Language': 'zh-CN',
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      'Access-Control-Allow-Origin': '',
-      'Access-Control-Allow-Credentials': ''
-    };
-    axios.defaults.headers = headers;
-    // axios.get("http://10.221.128.9:8280/tRetailAPI/config/validation").then((res)=>{
-    //   const jres = jsonPath(res.data,'$.configProperties');
-    //   console.log(jres);
-    // });
+    const c1 = TsBase64.Encode('123456');
+    console.log(c1);
+    console.log(TsBase64.Decode(c1));
+    getUser(1).then(res=>console.log(res.data));
+    auth({username:'1',password:'123'}).then(res=>console.log(res.data));
     i18n._.locale('zh');
   };
 
@@ -51,7 +44,7 @@ const Index =()=> {
       <AtButton onClick={switchToChinese}>中文</AtButton>
 
       <AtButton onClick={increment}>-</AtButton>
-            <Text>{count} </Text>
+        <Text>{count} </Text>
       <AtButton onClick={decrement}>+</AtButton>
 
     </View>

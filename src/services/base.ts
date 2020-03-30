@@ -4,7 +4,7 @@ const api = 'http://localhost:3005/api'
 class Request {
   header = {
     'content-type': 'application/json'
-  }
+  };
 
   // 暂时微信平台， 多平台此处需要优化
   async getOpenid() {
@@ -21,7 +21,7 @@ class Request {
         appid: localAppid
       }
     }
-    
+
   }
 
   get({action, data}) {
@@ -29,7 +29,7 @@ class Request {
       platform: Taro.getEnv(),
       ...data,
       ...this.getOpenid()
-    }
+    };
     return new Promise((resolve) => {
       Taro.request({
         url: api,

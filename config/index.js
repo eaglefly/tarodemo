@@ -1,10 +1,10 @@
-const path = require('path')
+const path = require('path');
 
 function resolve(name) {
   return path.resolve(__dirname, '..', name);
 }
 const config = {
-  projectName: 'tsdemo',
+  projectName: 'tarodemo',
   date: '2020-3-29',
   designWidth: 750,
   deviceRatio: {
@@ -58,7 +58,7 @@ const config = {
     }
   },
   alias: {
-    '@': resolve('src'),
+    '@': resolve('src')
   },
   h5: {
     publicPath: '/',
@@ -67,8 +67,8 @@ const config = {
       host: 'localhost',
       port: 10086,
       proxy: {
-        '/api': {
-          target: 'http://localhost:9000',  // 服务端地址
+        '/om': {
+          target: ' http://yapi.demo.qunar.com/mock/91309',  // 服务端地址
           changeOrigin: true,
         }
       }

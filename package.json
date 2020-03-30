@@ -33,6 +33,7 @@
     "@tarojs/components": "2.0.7",
     "@tarojs/components-qa": "2.0.7",
     "@tarojs/mobx": "^2.0.7",
+    "@tarojs/mobx-h5": "^2.0.7",
     "@tarojs/router": "2.0.7",
     "@tarojs/taro": "2.0.7",
     "@tarojs/taro-alipay": "2.0.7",
