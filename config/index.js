@@ -1,3 +1,8 @@
+const path = require('path')
+
+function resolve(name) {
+  return path.resolve(__dirname, '..', name);
+}
 const config = {
   projectName: 'tsdemo',
   date: '2020-3-29',
@@ -51,6 +56,9 @@ const config = {
         }
       }
     }
+  },
+  alias: {
+    '@': resolve('src'),
   },
   h5: {
     publicPath: '/',

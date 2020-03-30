@@ -1,18 +1,22 @@
 import {AtButton} from "taro-ui";
+import { observer } from '@tarojs/mobx';
 import axios from 'taro-axios'
-import Taro,{useState,useEffect} from '@tarojs/taro'
+import Taro,{useState,useEffect,useContext} from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import './index.scss'
-import CounterContainer from './CounterContainer';
-import Counter from './Counter';
 import i18n from "../../i18n";
+// import jsonPath from '../../jsonpath';
+import store from '../../store/index'
 
 const Index =()=> {
+  const { count, increment, decrement } = useContext(store)
+
+
   const message = i18n.profile.info({
     name: 'Tom',
   });
 
-  const [locale, setLocale] = useState('en');
+  const [locale, setLocale] = useState('zh');
 
   useEffect(() => {
     return i18n._.listen(setLocale);
@@ -23,7 +27,18 @@ const Index =()=> {
   };
 
   const switchToChinese = () => {
-    axios("/api").then(res=>console.log(res.data));
+    const headers = {
+      'Accept-Language': 'zh-CN',
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      'Access-Control-Allow-Origin': '',
+      'Access-Control-Allow-Credentials': ''
+    };
+    axios.defaults.headers = headers;
+    // axios.get("http://10.221.128.9:8280/tRetailAPI/config/validation").then((res)=>{
+    //   const jres = jsonPath(res.data,'$.configProperties');
+    //   console.log(jres);
+    // });
     i18n._.locale('zh');
   };
 
@@ -34,13 +49,15 @@ const Index =()=> {
       <Text>{locale} </Text>
       <AtButton onClick={switchToEnglish}>English</AtButton>
       <AtButton onClick={switchToChinese}>中文</AtButton>
-      <CounterContainer.Provider initialState={10}>
-        <Counter />
-      </CounterContainer.Provider>
+
+      <AtButton onClick={increment}>-</AtButton>
+            <Text>{count} </Text>
+      <AtButton onClick={decrement}>+</AtButton>
+
     </View>
   )
 };
 Index.config = {
   navigationBarTitleText: '首页'
 };
-export default Index;
+export default observer(Index)

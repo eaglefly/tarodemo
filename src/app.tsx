@@ -42,7 +42,7 @@ class App extends Component {
   // 请勿修改此函数
   render () {
     return (
-      <Index />
+       <Index />
     )
   }
 }

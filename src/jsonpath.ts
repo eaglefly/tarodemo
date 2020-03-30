@@ -1,5 +1,5 @@
-
-function jsonPath(obj, expr, arg) {
+/* eslint-disable no-unused-vars */
+export default function jsonPath(obj:any, expr:string, arg?:Object) {
     var P = {
         resultType: arg && arg.resultType || 'VALUE',
         result: [],
@@ -183,3 +183,4 @@ function calcExpressionWithoutQuote(expression) {
   function isOperatorChar(aimChar) {
     return '+-*/'.indexOf(aimChar) > - 1;
   }
+  
