@@ -1,11 +1,20 @@
-import Axios from 'taro-axios';
+import axios from 'taro-axios';
 
-const header = {
+class Axios {
+    public header = {}
+    public API_PATH  = ''; // '/om'
+    public setHeaders ( header:{}) {
+        this.header = header;
+    }
+    public setApiPath (apiPath:string){
+        this.API_PATH = apiPath;
+    }
+    public  get(url:string,params?:{},config?:{}) {
+        return axios.get( url, params || config);
+    }
+    public  post(url:string,params?:{},config?:{}){
+        return axios.post( url,params,config);
+    }
 
-};
-Axios.defaults.headers = header;
-// Axios.defaults.baseURL = 'http://yapi.demo.qunar.com/mock/91309/';
-
-export default Axios;
-const API_PATH='/om';
-export { API_PATH }
+}
+export default (new Axios());

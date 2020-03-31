@@ -1,7 +1,7 @@
 import { createContext } from '@tarojs/taro'
 import { observable, action, decorate } from 'mobx'
-
 import { getUser,auth,Login } from '../services/demo';
+
 
 class Index {
   count = 0;

@@ -1,5 +1,6 @@
-import Axios,{API_PATH} from './index';
+import Axios from './index';
 
+const API_PATH = Axios.API_PATH;
 const getUser = async (id:number)=>{
     return Axios.get(API_PATH + `/user/${id}`)
 };

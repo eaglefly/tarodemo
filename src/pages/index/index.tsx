@@ -9,6 +9,7 @@ import store from '../../store/index'
 import TsBase64 from '../../util/TsBase64';
 
 const Index =()=> {
+
   const { count, increment, decrement, getUser,auth } = useContext(store) as any;
 
 
@@ -30,6 +31,7 @@ const Index =()=> {
     const c1 = TsBase64.Encode('123456');
     console.log(c1);
     console.log(TsBase64.Decode(c1));
+   
     getUser(1).then(res=>console.log(res.data));
     auth({username:'1',password:'123'}).then(res=>console.log(res.data));
     i18n._.locale('zh');

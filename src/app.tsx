@@ -2,6 +2,7 @@ import 'taro-ui/dist/style/index.scss';
 import Taro, { Component, Config } from '@tarojs/taro';
 import Index from './pages/index';
 import './app.scss';
+import  Axios from './services/index';
 
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：
@@ -11,6 +12,15 @@ import './app.scss';
 
 class App extends Component {
 
+  constructor(){
+    super();
+    if(process.env.TARO_ENV === 'h5'){
+      Axios.setApiPath('/om');
+    } else {
+      Axios.setApiPath('http://yapi.demo.qunar.com/mock/91309/om');
+    }
+  }
+  
   componentDidMount () {}
 
   componentDidShow () {}
