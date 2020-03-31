@@ -4,7 +4,7 @@ class Axios {
     public header = {}
     public API_PATH  = ''; // '/om'
     public setHeaders ( header:{}) {
-        this.header = header;
+        axios.defaults.headers = header;
     }
     public setApiPath (apiPath:string){
         this.API_PATH = apiPath;

@@ -4,11 +4,11 @@ import zh from "./locales/zh";
 
 const i18n = createI18n({
     defaultLocale: {
-        key: 'en',
-        values: en,
+        key: 'zh',
+        values: zh,
     }
     // loader: (name) => import(`./locales/${name}`),
 });
-i18n._.define('zh', zh).locale('zh');
+i18n._.define('en', en).locale('zh');
 
 export default i18n;
