@@ -1,29 +1,28 @@
 import { createContext } from '@tarojs/taro'
-import { observable, action, decorate } from 'mobx'
-import { getUser,auth,Login } from '../services/demo';
+import { observable, action } from 'mobx'
+import { getUser,auth } from '../services/demo';
 
 
 class Index {
+  @observable
   count = 0;
+
+  @action.bound
   increment(){
     return this.count -= 1;
   }
+  @action.bound
   decrement(){
     return this.count += 1;
   }
+  @action.bound
   getUser(id:number){
      return getUser(id);
   }
-  auth(login:Login){
+  @action.bound
+  auth(login){
     return auth(login);
   }
 }
-decorate(Index, {
-  count: observable,
-  increment: action.bound,
-  decrement: action.bound,
-  getUser: action.bound,
-  auth: action.bound
-});
 
 export default createContext(new Index());

@@ -90,7 +90,6 @@ const Index =()=> {
 
   return (
     <View>
-      <Text>Hello world!</Text>
       <Text>{message} </Text>
       <Text>{locale} </Text>
       <AtButton onClick={switchToEnglish}>English</AtButton>
